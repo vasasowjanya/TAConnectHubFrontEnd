@@ -1,4 +1,10 @@
+import toast from "react-hot-toast";
+import axiosInstance from "../../../utils/axiosInstance";
+import catchAsync from "../../../utils/catchAsync";
+import { useNavigate } from "react-router-dom";
+
 const TaSignUp = () => {
+  const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -6,11 +12,19 @@ const TaSignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const z_number = form.z_number.value;
+    const z_id = form.z_number.value;
     const department = form.department.value;
     const level = form.level.value;
+    const type = "ta_applicant";
 
-    console.log(name, email, password, z_number, department, level);
+    catchAsync(async () => {
+      const res = await axiosInstance.post("/auth/signup", {
+        user_data: { name, email, phone: "", password, type },
+        ta_applicant_data: { z_id, department, level },
+      });
+      toast.success(res.data.message);
+      navigate("/");
+    })();
   };
 
   return (
@@ -58,7 +72,7 @@ const TaSignUp = () => {
                 <span className="label-text font-medium">Z Number</span>
               </div>
               <input
-                type="number"
+                type="text"
                 name="z_number"
                 id="z_number"
                 placeholder="Enter your z-number here"

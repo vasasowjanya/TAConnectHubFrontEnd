@@ -1,4 +1,10 @@
+import toast from "react-hot-toast";
+import axiosInstance from "../../../utils/axiosInstance";
+import catchAsync from "../../../utils/catchAsync";
+import { useNavigate } from "react-router-dom";
+
 const InstructorSignUp = () => {
+  const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -7,8 +13,15 @@ const InstructorSignUp = () => {
     const email = form.email.value;
     const phone = form.phone.value;
     const password = form.password.value;
+    const type = "instructor";
 
-    console.log(name, email, phone, password);
+    catchAsync(async () => {
+      const res = await axiosInstance.post("/auth/signup", {
+        user_data: { name, email, phone, password, type },
+      });
+      toast.success(res.data.message);
+      navigate("/");
+    })();
   };
 
   return (

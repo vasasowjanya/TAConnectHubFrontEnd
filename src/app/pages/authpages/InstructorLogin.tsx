@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import catchAsync from "../../../utils/catchAsync";
+import axiosInstance from "../../../utils/axiosInstance";
+import toast from "react-hot-toast";
 
 const InstructorLogin = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -7,7 +10,13 @@ const InstructorLogin = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+    catchAsync(async () => {
+      const res = await axiosInstance.post("/auth/login", { email, password });
+      toast.success(res.data.message);
+      localStorage.setItem("token", res.data.data.token);
+      window.location.reload();
+    })();
   };
 
   return (

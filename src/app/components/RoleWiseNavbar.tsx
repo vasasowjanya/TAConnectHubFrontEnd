@@ -10,7 +10,13 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <FaRegUser className="text-xl" />
       </li>
-      <li className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer">
+      <li
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+        className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer"
+      >
         Logout
       </li>
     </ul>
@@ -24,7 +30,13 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <FaRegUser className="text-xl" />
       </li>
-      <li className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer">
+      <li
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+        className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer"
+      >
         Logout
       </li>
     </ul>
@@ -38,7 +50,13 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <FaRegUser className="text-xl" />
       </li>
-      <li className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer">
+      <li
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+        className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer"
+      >
         Logout
       </li>
     </ul>
@@ -50,17 +68,23 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <FaRegUser className="text-xl" />
       </li>
-      <li className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer">
+      <li
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+        className="bg-red-600 px-5 py-2 text-base font-semibold rounded-md cursor-pointer"
+      >
         Logout
       </li>
     </ul>
   );
 
-  if (role === "ta-applicant") {
+  if (role === "ta_applicant") {
     return taSidebarItems;
-  } else if (role === "department-staff") {
+  } else if (role === "department_staff") {
     return departmentSidebarItems;
-  } else if (role === "ta-committee") {
+  } else if (role === "ta_committee_member") {
     return taCommitteeSidebarItems;
   } else if (role === "instructor") {
     return instructorSidebarItems;

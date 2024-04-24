@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -17,12 +18,18 @@ import CommitteeSignUp from "../app/pages/authpages/CommitteeSignUp";
 import InstructorSignUp from "../app/pages/authpages/InstructorSignUp";
 
 export default function Routes() {
-  // const isTokenAvailable = localStorage.getItem("token");
+  const isTokenAvailable = localStorage.getItem("token");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<LoginLayout />}>
+        {/* auth routes */}
+        <Route
+          path="/"
+          element={
+            isTokenAvailable ? <Navigate to="/dashboard" /> : <LoginLayout />
+          }
+        >
           <Route path="/" element={<Home />} />
           <Route path="/login/ta-applicant" element={<TaLogin />} />
           <Route path="/signup/ta-applicant" element={<TaSignUp />} />
@@ -42,39 +49,13 @@ export default function Routes() {
           <Route path="/login/instructor" element={<InstructorLogin />} />
           <Route path="/signup/instructor" element={<InstructorSignUp />} />
         </Route>
-        <Route path="/dashboard" element={<BaseLayout />}>
-          {/* Your existing routes inside AppLayout */}
-          {/* <Route path="booking" element={<BookingList />} /> */}
-        </Route>
-      </>
-      // <>
-      //   <Route
-      //     path="/login"
-      //     element={isTokenAvailable ? <Navigate to="/" /> : <Login />}
-      //   />
-      //   {isTokenAvailable ? (
-      //     <Route path="/" element={<AppLayout />}>
-      //       {/* Your existing routes inside AppLayout */}
-      //       <Route path="booking" element={<BookingList />} />
-      //       <Route path="theater" element={<TheaterList />} />
-      //       <Route path="event" element={<EventList />} />
-      //       <Route path="decoration" element={<DecorationList />} />
-      //       <Route path="rose" element={<RoseList />} />
-      //       <Route path="photography" element={<PhotographyList />} />
-      //       <Route path="cake" element={<CakeList />} />
-      //       <Route path="food" element={<FoodList />} />
-      //       <Route path="changePassword" element={<ChangePassword />} />
-      //       <Route path="*" element={<Navigate to="/" />} />
 
-      //       <Route path="*" element={<Navigate to="/" />} />
-      //     </Route>
-      //   ) : (
-      //     <>
-      //       <Route path="/" element={<Navigate to="/login" />} />
-      //       <Route path="*" element={<Navigate to="/login" />} />
-      //     </>
-      //   )}
-      // </>
+        {/* protected routes */}
+        <Route
+          path="/dashboard"
+          element={isTokenAvailable ? <BaseLayout /> : <Navigate to="/" />}
+        ></Route>
+      </>
     )
   );
 
