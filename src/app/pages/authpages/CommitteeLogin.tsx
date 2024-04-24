@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CommitteeLogin = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (event: any) => {
@@ -52,7 +54,10 @@ const CommitteeLogin = () => {
           </button>
         </div>
         <h1 className="pt-3 text-sm font-medium text-center">
-          Don't have an account? Sign up here
+          Don't have an account?{" "}
+          <span className="text-red-500 font-semibold">
+            <Link to="/signup/ta-committee-member">Sign up here</Link>
+          </span>
         </h1>
       </form>
     </div>

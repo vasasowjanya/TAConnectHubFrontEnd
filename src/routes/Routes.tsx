@@ -11,6 +11,10 @@ import TaLogin from "../app/pages/authpages/TaLogin";
 import DepartmentLogin from "../app/pages/authpages/DepartmentLogin";
 import CommitteeLogin from "../app/pages/authpages/CommitteeLogin";
 import InstructorLogin from "../app/pages/authpages/InstructorLogin";
+import TaSignUp from "../app/pages/authpages/TaSignUp";
+import DepartmentSignUp from "../app/pages/authpages/DepartmentSignUp";
+import CommitteeSignUp from "../app/pages/authpages/CommitteeSignUp";
+import InstructorSignUp from "../app/pages/authpages/InstructorSignUp";
 
 export default function Routes() {
   // const isTokenAvailable = localStorage.getItem("token");
@@ -21,12 +25,22 @@ export default function Routes() {
         <Route path="/" element={<LoginLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/login/ta-applicant" element={<TaLogin />} />
+          <Route path="/signup/ta-applicant" element={<TaSignUp />} />
           <Route path="/login/department-staff" element={<DepartmentLogin />} />
+          <Route
+            path="/signup/department-staff"
+            element={<DepartmentSignUp />}
+          />
           <Route
             path="/login/ta-committee-member"
             element={<CommitteeLogin />}
           />
+          <Route
+            path="/signup/ta-committee-member"
+            element={<CommitteeSignUp />}
+          />
           <Route path="/login/instructor" element={<InstructorLogin />} />
+          <Route path="/signup/instructor" element={<InstructorSignUp />} />
         </Route>
         <Route path="/dashboard" element={<BaseLayout />}>
           {/* Your existing routes inside AppLayout */}

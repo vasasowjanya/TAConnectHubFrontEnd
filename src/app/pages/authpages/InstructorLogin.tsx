@@ -1,20 +1,22 @@
-const InstructorLogin = () => {
+import { Link } from "react-router-dom";
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleSubmit = (event: any) => {
-      event.preventDefault();
-      const form = event.target;
-      const email = form.email.value;
-      const password = form.password.value;
-      console.log(email, password);
-    };
+const InstructorLogin = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
 
   return (
     <div className="py-24 flex flex-col justify-center items-center">
-      <form onSubmit={handleSubmit} className="border-2 border-gray-200 rounded-md shadow-lg p-5 mx-auto">
-        <h1 className="text-xl font-semibold text-center">
-          Instructor Login
-        </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="border-2 border-gray-200 rounded-md shadow-lg p-5 mx-auto"
+      >
+        <h1 className="text-xl font-semibold text-center">Instructor Login</h1>
         <br />
         <div className="w-[300px]">
           <label className="form-control w-full">
@@ -50,7 +52,10 @@ const InstructorLogin = () => {
           </button>
         </div>
         <h1 className="pt-3 text-sm font-medium text-center">
-          Don't have an account? Sign up here
+          Don't have an account?{" "}
+          <span className="text-red-500 font-semibold">
+            <Link to="/signup/instructor">Sign up here</Link>
+          </span>
         </h1>
       </form>
     </div>
