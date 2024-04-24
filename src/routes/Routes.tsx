@@ -18,6 +18,7 @@ import CommitteeSignUp from "../app/pages/authpages/CommitteeSignUp";
 import InstructorSignUp from "../app/pages/authpages/InstructorSignUp";
 import TaApplyPage from "../app/pages/dashboardpages/TaApplyPage";
 import TaCourseApplyForm from "../app/pages/dashboardpages/TaCourseApplyForm";
+import Courses from "../app/pages/dashboardpages/Courses";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -59,9 +60,11 @@ export default function Routes() {
         >
           <Route path="ta-apply" element={<TaApplyPage />} />
           <Route path="ta-apply/:id" element={<TaCourseApplyForm />} />
+        
+          <Route path="courses" element={<Courses />} />
         </Route>
-      </>
-    )
+      </>,
+    ),
   );
 
   return <RouterProvider router={router} />;

@@ -24,7 +24,9 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
 
   const departmentSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
-      <li>Course Management</li>
+      <li>
+        <Link to={"courses"}>Course Management</Link>
+      </li>
       <li>TA Application Review</li>
       <li>TA Selection Status</li>
 
