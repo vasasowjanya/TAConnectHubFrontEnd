@@ -6,6 +6,11 @@ import {
 } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import BaseLayout from "../layouts/BaseLayout";
+import Home from "../app/pages/authpages/Home";
+import TaLogin from "../app/pages/authpages/TaLogin";
+import DepartmentLogin from "../app/pages/authpages/DepartmentLogin";
+import CommitteeLogin from "../app/pages/authpages/CommitteeLogin";
+import InstructorLogin from "../app/pages/authpages/InstructorLogin";
 
 export default function Routes() {
   // const isTokenAvailable = localStorage.getItem("token");
@@ -14,8 +19,14 @@ export default function Routes() {
     createRoutesFromElements(
       <>
         <Route path="/" element={<LoginLayout />}>
-          {/* Your existing routes inside AppLayout */}
-          {/* <Route path="booking" element={<BookingList />} />  */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login/ta-applicant" element={<TaLogin />} />
+          <Route path="/login/department-staff" element={<DepartmentLogin />} />
+          <Route
+            path="/login/ta-committee-member"
+            element={<CommitteeLogin />}
+          />
+          <Route path="/login/instructor" element={<InstructorLogin />} />
         </Route>
         <Route path="/dashboard" element={<BaseLayout />}>
           {/* Your existing routes inside AppLayout */}
