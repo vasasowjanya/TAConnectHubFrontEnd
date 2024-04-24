@@ -6,7 +6,6 @@ import { RoleWiseNavbar } from "./RoleWiseNavbar";
 const DashboardNavbar = () => {
   const token = localStorage.getItem("token");
   const decodedData = jwtDecode(token as string);
-  console.log(decodedData);
 
   return (
     <div>
