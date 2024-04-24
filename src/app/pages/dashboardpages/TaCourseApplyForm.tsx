@@ -40,6 +40,8 @@ const TaCourseApplyForm = () => {
     const previous_service = form.previous_service_details.value;
 
     const submitData = {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       ta_applicant_id: decodedData.id,
       has_served_before: hasExperience,
       credit_completed,
@@ -50,13 +52,15 @@ const TaCourseApplyForm = () => {
     };
 
     if (hasExperience) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       submitData.previous_service_details = previous_service;
     }
 
     console.log(submitData);
 
     catchAsync(async () => {
-      const res = await axiosInstance.post("/applications", submitData);
+      await axiosInstance.post("/applications", submitData);
       toast.success("Submitted data successfully");
       navigate("/dashboard/ta-apply");
     })();
@@ -70,6 +74,8 @@ const TaCourseApplyForm = () => {
       >
         {courseData && (
           <h1 className="text-xl font-semibold text-center">
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             Application Form - {courseData.title} - {courseData.term}
           </h1>
         )}
