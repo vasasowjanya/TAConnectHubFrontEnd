@@ -4,7 +4,16 @@ const BaseLayout = () => {
     return (
         <div>
             Baseeee
-         <Outlet></Outlet>    
+            <br />
+            <button
+                onClick={() => {
+                    localStorage.removeItem("token");
+                    window.location.reload();
+                }}
+            >
+                Logout
+            </button>
+            <Outlet></Outlet>
         </div>
     );
 };
