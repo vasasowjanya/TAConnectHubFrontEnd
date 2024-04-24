@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export const RoleWiseNavbar = ({ role }: { role: string }) => {
   const taSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
-      <li>Apply Here</li>
+      <li>
+        <Link to="/dashboard/ta-apply">Apply Here</Link>
+      </li>
       <li>My Applications</li>
       <li>Application Status</li>
       <li>Offers</li>
-      <li>
-        <FaRegUser className="text-xl" />
-      </li>
+
       <li
         onClick={() => {
           localStorage.removeItem("token");
@@ -30,9 +30,7 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       </li>
       <li>TA Application Review</li>
       <li>TA Selection Status</li>
-      <li>
-        <FaRegUser className="text-xl" />
-      </li>
+
       <li
         onClick={() => {
           localStorage.removeItem("token");
@@ -50,9 +48,7 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>Course Management</li>
       <li>TA Application Review</li>
       <li>TA Selection Status</li>
-      <li>
-        <FaRegUser className="text-xl" />
-      </li>
+
       <li
         onClick={() => {
           localStorage.removeItem("token");
@@ -68,9 +64,7 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
   const instructorSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
       <li>TA Feedback</li>
-      <li>
-        <FaRegUser className="text-xl" />
-      </li>
+
       <li
         onClick={() => {
           localStorage.removeItem("token");
