@@ -16,6 +16,7 @@ import TaSignUp from "../app/pages/authpages/TaSignUp";
 import DepartmentSignUp from "../app/pages/authpages/DepartmentSignUp";
 import CommitteeSignUp from "../app/pages/authpages/CommitteeSignUp";
 import InstructorSignUp from "../app/pages/authpages/InstructorSignUp";
+import Courses from "../app/pages/dashboardpages/Courses";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -54,9 +55,11 @@ export default function Routes() {
         <Route
           path="/dashboard"
           element={isTokenAvailable ? <BaseLayout /> : <Navigate to="/" />}
-        ></Route>
-      </>
-    )
+        >
+          <Route path="courses" element={<Courses />} />
+        </Route>
+      </>,
+    ),
   );
 
   return <RouterProvider router={router} />;
