@@ -1,6 +1,30 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable no-prototype-builtins */
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axiosInstance from "../../../utils/axiosInstance";
 
 const TaFeedback = () => {
+  const [courseData, setCourseData] = useState([]);
+
+  useEffect(() => {
+    const getCourse = async () => {
+      const res = await axiosInstance.get("/courses?get_all=true");
+      if (res.data.success) {
+        setCourseData(res.data.data.data);
+      }
+    };
+    getCourse();
+  }, []);
+
+  const assignedCourses =
+    courseData &&
+    courseData.filter(
+      (course) =>
+        course.hasOwnProperty("assigned_to_id") &&
+        course.assigned_to_id !== null
+    );
+
   return (
     <div>
       <h1 className="text-lg">TA Feedback</h1>
@@ -13,27 +37,36 @@ const TaFeedback = () => {
                 <th></th>
                 <th>Subject</th>
                 <th>Name</th>
-                <th>Z-Number</th>
                 <th>Feedback</th>
                 <th> Add/Edit Feedback</th>
               </tr>
             </thead>
             <tbody className="text-lg">
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-                <td>Blue</td>
-                <td>
-                  <Link to="/dashboard/ta-feedback/1">
-                    <button className="btn bg-purple-700 hover:bg-purple-800 text-white">
-                      Add / Edit
-                    </button>
-                  </Link>
-                </td>
-              </tr>
+
+              {assignedCourses &&
+                assignedCourses.map((course, i) => (
+                  <tr key={i}>
+                    <th>{i + 1}</th>
+                    {/* @ts-ignore */}
+                    <td>{course?.title}</td>
+                    {/* @ts-ignore */}
+                    <td>{course?.assgined_to?.name}</td>
+
+                    <td>
+                      {/* @ts-ignore */}
+                      {course?.feedback ? course?.feedback : "No Feedback"}
+                    </td>
+                    <td>
+                      {/* @ts-ignore */}
+                      <Link to={`/dashboard/ta-feedback/${course?.id}`}>
+                        <button className="btn bg-purple-700 hover:bg-purple-800 text-white">
+                          Add / Edit
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
