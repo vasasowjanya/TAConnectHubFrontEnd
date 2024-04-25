@@ -4,7 +4,7 @@ const TaFeedback = () => {
   return (
     <div>
       <h1 className="text-lg">TA Feedback</h1>
-      <div>
+      <div className="mt-2">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
