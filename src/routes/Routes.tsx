@@ -60,6 +60,7 @@ export default function Routes() {
           <Route path="/signup/instructor" element={<InstructorSignUp />} />
         </Route>
 
+
         {/* protected routes */}
         <Route
           path="/dashboard"
