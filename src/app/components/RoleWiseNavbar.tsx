@@ -1,4 +1,4 @@
-import { FaRegUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const RoleWiseNavbar = ({ role }: { role: string }) => {
@@ -7,9 +7,20 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <Link to="/dashboard/ta-apply">Apply Here</Link>
       </li>
-      <li>My Applications</li>
-      <li>Application Status</li>
-      <li>Offers</li>
+      <li>
+        <Link to={"/dashboard/my-applies"}>My Applications</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/my-application-status"}>Application Status</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/accept-reject-offers"}>Offers</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/user"}>
+          <FaUser />
+        </Link>
+      </li>
 
       <li
         onClick={() => {
@@ -28,9 +39,19 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <Link to={"courses"}>Course Management</Link>
       </li>
-      <li>TA Application Review</li>
-      <li>TA Selection Status</li>
-
+      <li>
+        <Link to={"/dashboard/ta-application-review"}>
+          TA Application Review
+        </Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/ta-recommandation"}>TA Recommandation</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/user"}>
+          <FaUser />
+        </Link>
+      </li>
       <li
         onClick={() => {
           localStorage.removeItem("token");
@@ -48,7 +69,11 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>Course Management</li>
       <li>TA Application Review</li>
       <li>TA Selection Status</li>
-
+      <li>
+        <Link to={"/dashboard/user"}>
+          <FaUser />
+        </Link>
+      </li>
       <li
         onClick={() => {
           localStorage.removeItem("token");
@@ -64,7 +89,11 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
   const instructorSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
       <li>TA Feedback</li>
-
+      <li>
+        <Link to={"/dashboard/user"}>
+          <FaUser />
+        </Link>
+      </li>
       <li
         onClick={() => {
           localStorage.removeItem("token");
