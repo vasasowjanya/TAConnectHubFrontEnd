@@ -26,6 +26,7 @@ import UserProfile from "../app/pages/dashboardpages/UserProfile";
 import TaApplicationReview from "../app/pages/dashboardpages/TaApplicationReview";
 import SingleApplicationDetail from "../app/pages/dashboardpages/SingleApplicationDetail";
 import TaRecomandation from "../app/pages/dashboardpages/TaRecomandation";
+import TaSelection from "../app/pages/dashboardpages/TaSelection";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -60,7 +61,6 @@ export default function Routes() {
           <Route path="/signup/instructor" element={<InstructorSignUp />} />
         </Route>
 
-
         {/* protected routes */}
         <Route
           path="/dashboard"
@@ -83,10 +83,9 @@ export default function Routes() {
             path="ta-application-review/:reviewId"
             element={<SingleApplicationDetail />}
           />
-          <Route
-            path="ta-recommandation"
-            element={<TaRecomandation />}
-          />
+          <Route path="ta-recommandation" element={<TaRecomandation />} />
+
+          <Route path="ta-selection" element={<TaSelection />} />
 
           <Route path="courses" element={<Courses />} />
         </Route>

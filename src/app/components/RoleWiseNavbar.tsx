@@ -66,9 +66,9 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
 
   const taCommitteeSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
-      <li>Course Management</li>
-      <li>TA Application Review</li>
-      <li>TA Selection Status</li>
+      <li>
+        <Link to={"/dashboard/ta-selection"}>TA Selection</Link>
+      </li>
       <li>
         <Link to={"/dashboard/user"}>
           <FaUser />
