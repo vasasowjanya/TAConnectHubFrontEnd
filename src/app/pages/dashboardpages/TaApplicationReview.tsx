@@ -1,6 +1,26 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import catchAsync from "../../../utils/catchAsync";
+import axiosInstance from "../../../utils/axiosInstance";
 
 const TaApplicationReview = () => {
+  const [applications, setApplications] = useState([]);
+  const [refetchTrigger, setRefetchTrigger] = useState(false);
+
+  useEffect(() => {
+    catchAsync(async () => {
+      const res = await axiosInstance.get(`/applications?get_all=true`);
+      setApplications(res.data.data.data);
+    })();
+  }, [refetchTrigger]);
+
+  const refetch = () => {
+    setRefetchTrigger((ps) => !ps);
+  };
+
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold text-center">
@@ -20,18 +40,22 @@ const TaApplicationReview = () => {
             </thead>
             <tbody className="text-lg">
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>
-                  <Link to="/dashboard/ta-application-review/1">
-                    <button className="btn bg-purple-700 hover:bg-purple-800 text-white">
-                      View Details
-                    </button>
-                  </Link>
-                </td>
-              </tr>
+              {applications.map((application, index) => (
+                <tr>
+                  <th>{index + 1}</th>
+                  <td>{application.course.title}</td>
+                  <td>{application.ta_applicant.ta_applicant.z_id}</td>
+                  <td>
+                    <Link
+                      to={`/dashboard/ta-application-review/${application.id}`}
+                    >
+                      <button className="btn bg-purple-700 hover:bg-purple-800 text-white">
+                        View Details
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
