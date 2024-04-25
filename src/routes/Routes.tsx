@@ -19,6 +19,10 @@ import InstructorSignUp from "../app/pages/authpages/InstructorSignUp";
 import TaApplyPage from "../app/pages/dashboardpages/TaApplyPage";
 import TaCourseApplyForm from "../app/pages/dashboardpages/TaCourseApplyForm";
 import Courses from "../app/pages/dashboardpages/Courses";
+import MyTaApplications from "../app/pages/dashboardpages/MyTaApplications";
+import MyTaApplicationStatus from "../app/pages/dashboardpages/MyTaApplicationStatus";
+import AcceptRejectOffers from "../app/pages/dashboardpages/AcceptRejectOffers";
+import UserProfile from "../app/pages/dashboardpages/UserProfile";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -60,11 +64,18 @@ export default function Routes() {
         >
           <Route path="ta-apply" element={<TaApplyPage />} />
           <Route path="ta-apply/:id" element={<TaCourseApplyForm />} />
-        
+          <Route path="my-applies" element={<MyTaApplications />} />
+          <Route
+            path="my-application-status"
+            element={<MyTaApplicationStatus />}
+          />
+          <Route path="accept-reject-offers" element={<AcceptRejectOffers />} />
+          <Route path="user" element={<UserProfile />} />
+
           <Route path="courses" element={<Courses />} />
         </Route>
-      </>,
-    ),
+      </>
+    )
   );
 
   return <RouterProvider router={router} />;
