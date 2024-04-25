@@ -1,4 +1,8 @@
 const UserProfile = () => {
+  const LSUser = localStorage.getItem("user");
+  let userData;
+  if (LSUser) userData = JSON.parse(LSUser);
+
   return (
     <div className="flex flex-col justify-center items-center">
       <div>
@@ -9,14 +13,31 @@ const UserProfile = () => {
         />
       </div>
       <div>
-        <h1 className="text-lg mt-2">Name: user</h1>
+        <h1 className="text-lg mt-2">
+          <b>Name: </b>
+          {userData.name}
+        </h1>
       </div>
       <div>
-        <h1 className="text-lg mt-2">Email: email</h1>
+        <h1 className="text-lg mt-2">
+          <b>Email: </b>
+          {userData.email}
+        </h1>
       </div>
       <div>
-        <h1 className="text-lg mt-2">Z Number: number</h1>
+        <h1 className="text-lg mt-2">
+          <b>Phone: </b>
+          {userData.phone}
+        </h1>
       </div>
+      {userData.type === "ta_applicant" && (
+        <div>
+          <h1 className="text-lg mt-2 uppercase">
+            <b>Z Number: </b>
+            {userData?.ta_applicant.z_id}
+          </h1>
+        </div>
+      )}
     </div>
   );
 };
