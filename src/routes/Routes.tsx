@@ -23,6 +23,9 @@ import MyTaApplications from "../app/pages/dashboardpages/MyTaApplications";
 import MyTaApplicationStatus from "../app/pages/dashboardpages/MyTaApplicationStatus";
 import AcceptRejectOffers from "../app/pages/dashboardpages/AcceptRejectOffers";
 import UserProfile from "../app/pages/dashboardpages/UserProfile";
+import TaApplicationReview from "../app/pages/dashboardpages/TaApplicationReview";
+import SingleApplicationDetail from "../app/pages/dashboardpages/SingleApplicationDetail";
+import TaRecomandation from "../app/pages/dashboardpages/TaRecomandation";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -71,6 +74,18 @@ export default function Routes() {
           />
           <Route path="accept-reject-offers" element={<AcceptRejectOffers />} />
           <Route path="user" element={<UserProfile />} />
+          <Route
+            path="ta-application-review"
+            element={<TaApplicationReview />}
+          />
+          <Route
+            path="ta-application-review/:reviewId"
+            element={<SingleApplicationDetail />}
+          />
+          <Route
+            path="ta-recommandation"
+            element={<TaRecomandation />}
+          />
 
           <Route path="courses" element={<Courses />} />
         </Route>

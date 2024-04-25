@@ -39,8 +39,14 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
       <li>
         <Link to={"courses"}>Course Management</Link>
       </li>
-      <li>TA Application Review</li>
-      <li>TA Selection Status</li>
+      <li>
+        <Link to={"/dashboard/ta-application-review"}>
+          TA Application Review
+        </Link>
+      </li>
+      <li>
+        <Link to={"/dashboard/ta-recommandation"}>TA Recommandation</Link>
+      </li>
       <li>
         <Link to={"/dashboard/user"}>
           <FaUser />
