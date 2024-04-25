@@ -1,5 +1,7 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-prototype-builtins */
+// @ts-nocheck
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosInstance";
@@ -22,7 +24,7 @@ const TaFeedback = () => {
     courseData.filter(
       (course) =>
         course.hasOwnProperty("assigned_to_id") &&
-        course.assigned_to_id !== null
+        course.assigned_to_id !== null,
     );
 
   return (

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosInstance";
@@ -6,6 +9,11 @@ import toast from "react-hot-toast";
 
 const TaSelection = () => {
   const [courseData, setCourseData] = useState([]);
+  const [refetchTrigger, setRefetchTrigger] = useState(false);
+
+  const refetch = () => {
+    setRefetchTrigger((ps) => !ps);
+  };
 
   useEffect(() => {
     const getCourse = async () => {
@@ -15,10 +23,9 @@ const TaSelection = () => {
       }
     };
     getCourse();
-  }, []);
+  }, [refetchTrigger]);
 
-  const applications =
-    courseData && courseData.filter((course) => course.accepted == "pending");
+  const applications = courseData && courseData.filter((course) => true);
 
   console.log(applications);
 
@@ -30,6 +37,7 @@ const TaSelection = () => {
     catchAsync(async () => {
       await axiosInstance.patch("/applications/" + id, submitData);
       toast.success("Offer accepted successfully");
+      refetch();
     })();
   };
   const handleReject = async (id) => {
@@ -40,6 +48,7 @@ const TaSelection = () => {
     catchAsync(async () => {
       await axiosInstance.patch("/applications/" + id, submitData);
       toast.success("Offer rejected successfully");
+      refetch();
     })();
   };
 
@@ -56,6 +65,7 @@ const TaSelection = () => {
                 <th>Subject</th>
                 <th>Username</th>
                 <th>Status</th>
+                <th>Recommendation</th>
                 <th>Action</th>
                 <th>Operation</th>
               </tr>
@@ -70,6 +80,11 @@ const TaSelection = () => {
                     <td>{application?.ta_applicant?.name}</td>
                     <td>{application?.accepted}</td>
                     <td>
+                      {application?.recommended
+                        ? "recommended"
+                        : "not recommended "}
+                    </td>
+                    <td>
                       <Link
                         to={`/dashboard/ta-application-review/${application?.id}`}
                       >
@@ -79,18 +94,25 @@ const TaSelection = () => {
                       </Link>
                     </td>
                     <td>
-                      <button
-                        onClick={() => handleAccept(application?.id)}
-                        className="btn bg-purple-700 hover:bg-purple-800 text-white"
-                      >
-                        Accept
-                      </button>
-                      <button
-                        onClick={() => handleReject(application?.id)}
-                        className="btn bg-purple-700 hover:bg-purple-800 text-white"
-                      >
-                        Reject
-                      </button>
+                      {application.offered === "pending" ? (
+                        <>
+                          {" "}
+                          <button
+                            onClick={() => handleAccept(application?.id)}
+                            className="btn bg-purple-700 hover:bg-purple-800 text-white"
+                          >
+                            Accept
+                          </button>
+                          <button
+                            onClick={() => handleReject(application?.id)}
+                            className="btn bg-purple-700 hover:bg-purple-800 text-white"
+                          >
+                            Reject
+                          </button>
+                        </>
+                      ) : (
+                        application.offered
+                      )}
                     </td>
                   </tr>
                 ))}

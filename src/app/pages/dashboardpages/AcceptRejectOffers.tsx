@@ -41,6 +41,7 @@ const AcceptRejectOffers = () => {
               <th>Subject</th>
               <th>Z Number</th>
               <th>Status</th>
+              <th>Feedback</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -57,6 +58,7 @@ const AcceptRejectOffers = () => {
                   <b>Accepted: </b>
                   {application.accepted}
                 </td>
+                <td>{application.course.feedback || "N/A"}</td>
                 <td className="flex items-center gap-2">
                   {application.accepted === "pending" ? (
                     <>

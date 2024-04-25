@@ -67,9 +67,6 @@ const SingleApplicationDetail = () => {
           {application?.course?.subject}
         </h1>
       </div>
-      <div>
-        <h1 className="text-lg mt-2">Other details</h1>
-      </div>
     </div>
   );
 };

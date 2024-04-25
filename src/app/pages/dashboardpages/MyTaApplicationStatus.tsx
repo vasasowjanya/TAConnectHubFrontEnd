@@ -46,8 +46,12 @@ const MyTaApplicationStatus = () => {
                   <b>Offered: </b>
                   {application.offered}
                   <br />
-                  <b>Accepted: </b>
-                  {application.accepted}
+                  {application.offered === "rejected" ? null : (
+                    <>
+                      <b>Accepted: </b>
+                      {application.accepted}
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

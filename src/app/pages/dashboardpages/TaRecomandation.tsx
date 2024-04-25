@@ -65,7 +65,6 @@ const TaRecomandation = () => {
                 <button
                   className="btn bg-purple-700 hover:bg-purple-800 text-white disabled:opacity-50"
                   type="submit"
-                  disabled={course.applications.find((a) => a.recommended)}
                 >
                   Recommand
                 </button>
