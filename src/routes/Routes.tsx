@@ -27,6 +27,8 @@ import TaApplicationReview from "../app/pages/dashboardpages/TaApplicationReview
 import SingleApplicationDetail from "../app/pages/dashboardpages/SingleApplicationDetail";
 import TaRecomandation from "../app/pages/dashboardpages/TaRecomandation";
 import TaSelection from "../app/pages/dashboardpages/TaSelection";
+import TaFeedback from "../app/pages/dashboardpages/TaFeedback";
+import SingleFeedback from "../app/pages/dashboardpages/SingleFeedback";
 
 export default function Routes() {
   const isTokenAvailable = localStorage.getItem("token");
@@ -86,6 +88,9 @@ export default function Routes() {
           <Route path="ta-recommandation" element={<TaRecomandation />} />
 
           <Route path="ta-selection" element={<TaSelection />} />
+
+          <Route path="ta-feedback" element={<TaFeedback />} />
+          <Route path="ta-feedback/:courseId" element={<SingleFeedback />} />
 
           <Route path="courses" element={<Courses />} />
         </Route>

@@ -88,7 +88,9 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
 
   const instructorSidebarItems = (
     <ul className="py-4 bg-[#373737] text-white flex justify-evenly items-center cursor-pointer">
-      <li>TA Feedback</li>
+      <li>
+        <Link to={"/dashboard/ta-feedback"}>TA Feedback</Link>
+      </li>
       <li>
         <Link to={"/dashboard/user"}>
           <FaUser />
