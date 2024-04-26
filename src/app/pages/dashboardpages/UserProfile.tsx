@@ -1,3 +1,10 @@
+// eslint-disable
+// @ts-nocheck
+
+import toast from "react-hot-toast";
+import axiosInstance from "../../../utils/axiosInstance";
+import catchAsync from "../../../utils/catchAsync";
+
 const UserProfile = () => {
   const LSUser = localStorage.getItem("user");
   let userData;
@@ -38,6 +45,82 @@ const UserProfile = () => {
           </h1>
         </div>
       )}
+
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        className="btn"
+        onClick={() => document.getElementById("my_modal_1").showModal()}
+      >
+        Update Profile
+      </button>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box bg-white">
+          <h3 className="font-bold text-lg">Update Profile</h3>
+          <br />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+
+              let data;
+
+              formData.forEach((value, key) => {
+                if (value) data = { ...data, [key]: value };
+              });
+
+              catchAsync(async () => {
+                const res = await axiosInstance.patch(
+                  `/auth/update/${userData.id}`,
+                  data,
+                );
+                toast.success(res.data.message);
+                document.getElementById("my_modal_1").close();
+                localStorage.setItem("user", JSON.stringify(res.data.data));
+                window.location.reload();
+              })();
+            }}
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              defaultValue={userData.name}
+              className="input w-full max-w-xs"
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              defaultValue={userData.phone}
+              className="input w-full max-w-xs"
+            />
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Old Password"
+              className="input w-full max-w-xs"
+            />
+
+            <input
+              type="password"
+              name="new_password"
+              placeholder="New Password"
+              className="input w-full max-w-xs"
+            />
+
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="btn text-white bg-green-500 hover:bg-green-600"
+            >
+              Update
+            </button>
+          </form>
+        </div>
+      </dialog>
     </div>
   );
 };
