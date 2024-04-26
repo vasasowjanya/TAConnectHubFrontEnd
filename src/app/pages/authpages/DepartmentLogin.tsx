@@ -15,6 +15,7 @@ const DepartmentLogin = () => {
       const res = await axiosInstance.post("/auth/login", { email, password });
       toast.success(res.data.message);
       localStorage.setItem("token", res.data.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.data.user));
       window.location.reload();
     })();
   };

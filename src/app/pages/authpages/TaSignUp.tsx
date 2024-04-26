@@ -12,6 +12,7 @@ const TaSignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const phone = form.phone.value;
     const z_id = form.z_number.value;
     const department = form.department.value;
     const level = form.level.value;
@@ -19,7 +20,7 @@ const TaSignUp = () => {
 
     catchAsync(async () => {
       const res = await axiosInstance.post("/auth/signup", {
-        user_data: { name, email, phone: "", password, type },
+        user_data: { name, email, phone: phone, password, type },
         ta_applicant_data: { z_id, department, level },
       });
       toast.success(res.data.message);

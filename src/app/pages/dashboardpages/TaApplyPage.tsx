@@ -3,8 +3,12 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../utils/axiosInstance";
 import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const TaApplyPage = () => {
+  const LSUser = localStorage.getItem("user");
+  const userData = JSON.parse(LSUser);
+
   const [courseList, setCourseList] = useState([]);
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const TaApplyPage = () => {
                 <th>Course Number</th>
                 <th>CRN Number</th>
                 <th>Term</th>
-                <th>Action</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -50,9 +54,14 @@ const TaApplyPage = () => {
                     <td className="text-lg">{course.course_number}</td>
                     <td className="text-lg">{course.crn_number}</td>
                     <td className="text-lg">{course.term}</td>
-                    <td>
+                    <td className="text-center">
                       <Link to={`/dashboard/ta-apply/${course.id}`}>
-                        <button className="px-5 py-3 bg-blue-600 text-white font-semibold text-base">
+                        <button
+                          className="px-5 py-3 bg-blue-600 text-white font-semibold text-base disabled:opacity-75"
+                          disabled={course.applications
+                            .map((a) => a.ta_applicant_id)
+                            .includes(userData.id)}
+                        >
                           Apply
                         </button>
                       </Link>
