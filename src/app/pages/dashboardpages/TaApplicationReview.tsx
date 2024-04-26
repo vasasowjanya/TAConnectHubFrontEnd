@@ -23,7 +23,7 @@ const TaApplicationReview = () => {
 
   return (
     <div>
-      <h1 className="mb-4 text-xl font-semibold text-center">
+      <h1 className="mb-4 text-xl font-semibold text-center mt-3">
         Application Review
       </h1>
       <div>
@@ -35,7 +35,7 @@ const TaApplicationReview = () => {
                 <th></th>
                 <th>Subject</th>
                 <th>Z Number</th>
-                <th>Options</th>
+                <th className="text-center">Options</th>
               </tr>
             </thead>
             <tbody className="text-lg">
@@ -45,7 +45,7 @@ const TaApplicationReview = () => {
                   <th>{index + 1}</th>
                   <td>{application.course.title}</td>
                   <td>{application.ta_applicant.ta_applicant.z_id}</td>
-                  <td>
+                  <td className="text-center">
                     <Link
                       to={`/dashboard/ta-application-review/${application.id}`}
                     >

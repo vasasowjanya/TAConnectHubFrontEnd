@@ -54,7 +54,8 @@ const TaSelection = () => {
 
   return (
     <div>
-      <h1 className="text-lg">TA Selection</h1>
+      <h1 className="text-3xl font-medium p-3">TA Selection</h1>
+      <hr />
       <div className="mt-2">
         <div className="overflow-x-auto">
           <table className="table">
@@ -66,8 +67,8 @@ const TaSelection = () => {
                 <th>Username</th>
                 <th>Status</th>
                 <th>Recommendation</th>
-                <th>Action</th>
-                <th>Operation</th>
+                <th className="text-center">Action</th>
+                <th className="text-center">Operation</th>
               </tr>
             </thead>
             <tbody className="text-lg">
@@ -84,7 +85,7 @@ const TaSelection = () => {
                         ? "recommended"
                         : "not recommended "}
                     </td>
-                    <td>
+                    <td className="text-center">
                       <Link
                         to={`/dashboard/ta-application-review/${application?.id}`}
                       >
@@ -93,10 +94,9 @@ const TaSelection = () => {
                         </button>
                       </Link>
                     </td>
-                    <td>
+                    <td className="text-center">
                       {application.offered === "pending" ? (
                         <>
-                          {" "}
                           <button
                             onClick={() => handleAccept(application?.id)}
                             className="btn bg-purple-700 hover:bg-purple-800 text-white"

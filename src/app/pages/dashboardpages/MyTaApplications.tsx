@@ -43,7 +43,7 @@ const MyTaApplications = () => {
   };
 
   return (
-    <div>
+    <div className="p-3">
       {applications.map((application) => (
         <div
           key={application.id}

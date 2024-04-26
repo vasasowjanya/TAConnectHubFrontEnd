@@ -24,13 +24,14 @@ const TaRecomandation = () => {
 
   return (
     <div>
-      <h1 className="text-lg">TA Recomandations</h1>
-      <div className="py-4">
+      <h1 className="text-3xl p-3">TA Recomandations</h1>
+      <hr />
+      <div className="py-4 space-y-3">
         {courses.map((course) => (
-          <div className="flex items-center gap-10" key={course.id}>
-            <div>{course.title}</div>
+          <div className="grid grid-cols-2 " key={course.id}>
+            <b>{course.title}</b>
             <form
-              className="flex gap-5"
+              className="flex justify-end gap-5"
               onSubmit={(e) => {
                 e.preventDefault();
                 const values = Object.fromEntries(new FormData(e.target));
@@ -52,7 +53,7 @@ const TaRecomandation = () => {
                   name="id"
                 >
                   <option disabled selected>
-                    Who shot first?
+                    Select Z ID
                   </option>
                   {course.applications.map((application) => (
                     <option value={application.id}>

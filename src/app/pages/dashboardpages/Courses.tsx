@@ -36,9 +36,8 @@ const Courses = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-yellow-600">Course List</h1>
-      <br />
+    <div className="">
+      <h1 className="text-3xl font-bold text-yellow-600 p-3">Course List</h1>
       <button
         className="btn btn-neutral bg-slate-800 text-white hover:text-black w-full"
         onClick={() => {

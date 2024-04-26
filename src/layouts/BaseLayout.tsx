@@ -5,7 +5,7 @@ const BaseLayout = () => {
   return (
     <div>
       <DashboardNavbar></DashboardNavbar>
-      <div className="p-3">
+      <div className="">
         <Outlet></Outlet>
       </div>
     </div>

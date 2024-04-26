@@ -29,7 +29,7 @@ const AcceptRejectOffers = () => {
 
   return (
     <div>
-      <h1 className="pb-4 text-xl font-semibold text-center">
+      <h1 className="pb-4 text-xl font-semibold text-center pt-3">
         My Available Offers
       </h1>
       <div className="overflow-x-auto">
@@ -59,9 +59,9 @@ const AcceptRejectOffers = () => {
                   {application.accepted}
                 </td>
                 <td>{application.course.feedback || "N/A"}</td>
-                <td className="flex items-center gap-2">
+                <td className="h-full">
                   {application.accepted === "pending" ? (
-                    <>
+                    <div className="flex items-center gap-2">
                       <button
                         className="btn bg-purple-700 hover:bg-purple-800 text-white"
                         onClick={() => {
@@ -96,9 +96,9 @@ const AcceptRejectOffers = () => {
                       >
                         Reject
                       </button>
-                    </>
+                    </div>
                   ) : (
-                    application.accepted
+                    <p>{application.accepted}</p>
                   )}
                 </td>
               </tr>

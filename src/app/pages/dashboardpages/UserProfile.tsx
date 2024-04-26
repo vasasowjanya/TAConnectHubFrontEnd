@@ -4,8 +4,8 @@ const UserProfile = () => {
   if (LSUser) userData = JSON.parse(LSUser);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div>
+    <div className="flex flex-col justify-center items-center mt-5">
+      <div className="mb-5">
         <img
           className="w-[100px] h-[100px] rounded-full"
           src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
