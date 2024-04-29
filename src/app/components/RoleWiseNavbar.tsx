@@ -45,7 +45,7 @@ export const RoleWiseNavbar = ({ role }: { role: string }) => {
         </Link>
       </li>
       <li>
-        <Link to={"/dashboard/ta-recommandation"}>TA Recommandation</Link>
+        <Link to={"/dashboard/ta-recommandation"}>TA Recommendation</Link>
       </li>
       <li>
         <Link to={"/dashboard/user"}>

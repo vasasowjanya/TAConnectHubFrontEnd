@@ -24,7 +24,7 @@ const TaRecomandation = () => {
 
   return (
     <div>
-      <h1 className="text-3xl p-3">TA Recomandations</h1>
+      <h1 className="text-3xl p-3 font-semibold text-center mt-3">TA Recommendations</h1>
       <hr />
       <div className="py-4 space-y-3">
         {courses.map((course) => (
@@ -67,7 +67,7 @@ const TaRecomandation = () => {
                   className="btn bg-purple-700 hover:bg-purple-800 text-white disabled:opacity-50"
                   type="submit"
                 >
-                  Recommand
+                  Recommend
                 </button>
               </div>
             </form>
